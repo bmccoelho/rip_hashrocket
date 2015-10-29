@@ -8,12 +8,8 @@ module RipHashrocket
 
     filecount = 0
     linecount = 0
-    rbfiles = File.join(directory ,"**", "*.rb")
-    rakefiles = File.join(directory ,"**", "*.rake")
-    slimfiles = File.join(directory ,"**", "*.html.slim")
     hamlfiles = File.join(directory ,"**", "*.html.haml")
-    erbfiles = File.join(directory ,"**", "*.html.erb")
-    (Dir.glob(rbfiles) + Dir.glob(rakefiles) + Dir.glob(slimfiles) + Dir.glob(hamlfiles) + Dir.glob(erbfiles)).each do |filename|
+    (Dir.glob(hamlfiles)).each do |filename|
       file = File.new(filename, "r+")
 
       made_changes = false
@@ -44,7 +40,7 @@ module RipHashrocket
         file.close
       end
     end
-    p "Hash Rockets has upgraded hash syntax on #{linecount} lines in #{filecount} out of #{Dir.glob(rbfiles).count} source files tested"
+    p "Hash Rockets has upgraded hash syntax on #{linecount} lines in #{filecount}."
   end
 
 end
